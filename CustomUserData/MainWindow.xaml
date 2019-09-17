@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Custom Context Group:" HorizontalAlignment="Left" Margin="113,94,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblGroup" Content="-- Group not found --" HorizontalAlignment="Left" Margin="113,125,0,0" VerticalAlignment="Top" Width="414" Height="59"/>
     </Grid>
 </Window>

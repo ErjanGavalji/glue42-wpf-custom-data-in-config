@@ -1,0 +1,18 @@
+[
+    {
+        "title": "WPF Custom User Context Data",
+        "type": "exe",
+        "name": "wpf-custom-user-context-data",
+        "hidden": false,
+        "details": {
+            "path": "C:\\work\\github\\ErjanGavalji\\CustomUserData\\CustomUserData\\bin\\Debug",
+            "command": "CustomUserData.exe",
+            "parameters": "",
+            "width": 1000,
+            "height": 400
+        },
+        "customProperties": {
+            "group": "UserManagement"
+        }
+    }
+]

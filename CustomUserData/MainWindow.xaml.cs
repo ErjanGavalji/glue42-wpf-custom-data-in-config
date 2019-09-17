@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Tick42;
 
 namespace CustomUserData
 {
@@ -20,9 +9,37 @@ namespace CustomUserData
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Glue42 glue;
+        private string appName = "wpf-custom-user-context-data";
+
         public MainWindow()
         {
             InitializeComponent();
+            //Initialize Glue42 and register the current app:
+            this.glue = new Glue42();
+            this.glue.Initialize(appName);
+
+            this.glue.AppManager.ApplicationAdded += AppManager_ApplicationAdded;
+        }
+
+        private void AppManager_ApplicationAdded(object sender, Tick42.AppManager.AppManagerApplicationEventArgs e)
+        {
+            Action action = () => {
+                if (e.Application.Name == this.appName)
+                {
+                    lblGroup.Content = e.Application.UserProperties["group"];
+                }
+            };
+
+            if (!CheckAccess())
+            {
+                Dispatcher.BeginInvoke(action, null);
+            }
+            else
+            {
+                action();
+            }
+
         }
     }
 }
